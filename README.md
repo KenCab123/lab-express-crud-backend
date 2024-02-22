@@ -222,26 +222,23 @@ Update is always the trickiest.
 - display the values in the inputs
 - on submit, the program should update the backend and also refresh the frontend based on the backend data
 
-### Bonuses
-
-- If you've already written a validation function, try adding it to the update route. If you have not written it yet, give it a try!
-- Go back and try any of the previous Bonuses
-
-### Backend Bonus
+### Backend Bonuses
 
 Add functionality where if a user goes to
 
-- `/logs?order=asc` it will organize the logs alphabetically
-- `/logs?order=desc` it will organize the logs in reverse alphabetical order
-- `/logs?mistakes=true` it will only show the logs where the value of `mistakesWereMadeToday` is true
-- `/logs?mistakes=false` it will only show the logs where the value of `mistakesWereMadeToday` is false
-- `/logs?lastCrisis=gt10` it will return all the logs where the `daysSinceLastCrisis`is **g**reater **t**than 10
-- `/logs?lastCrisis=gte20`it will return all the logs where the `daysSinceLastCrisis`is **g**reater **t**than or **e**qual to 20
-- `/logs?lastCrisis=lte5`it will return all the logs where the `daysSinceLastCrisis`is **l**ess **t**than or **e**qual to 5
+- If you've already written a validation function, try adding it to the update route. If you have not written it yet, give it a try!
+- search by name and only show names based on search. `/api/logs?captainname=<captainsName>` req.query
+- `/api/logs?order=asc` it will organize the logs alphabetically
+- `/api/logs?order=desc` it will organize the logs in reverse alphabetical order
+- `/api/logs?mistakes=true` it will only show the logs where the value of `mistakesWereMadeToday` is true
+- `/api/logs?mistakes=false` it will only show the logs where the value of `mistakesWereMadeToday` is false
+- `/api/logs?lastCrisis=gt10` it will return all the logs where the `daysSinceLastCrisis`is **g**reater **t**than 10
+- `/api/logs?lastCrisis=gte20`it will return all the logs where the `daysSinceLastCrisis`is **g**reater **t**than or **e**qual to 20
+- `/api/logs?lastCrisis=lte5`it will return all the logs where the `daysSinceLastCrisis`is **l**ess **t**than or **e**qual to 5
 
 **Note** the original `/logs` route should be unaffected by these additions
 
 ### Frontend Bonus
 
-- Add Routes
+- Add Routes using `react-router-dom@6.2.1`
 - Add CSS
