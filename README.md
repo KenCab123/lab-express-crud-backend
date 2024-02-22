@@ -36,9 +36,9 @@ If you feel like you are falling behind, reach out to an instructor.
 | :-: | :----: | :---: | :-------: | :------: | :-------------------------------: |
 |  1  | Index  | /logs |    GET    | **R**ead | Get a list (or index) of all logs |
 
-- `mkdir logs-crud && cd $_`
-- inside the logs-crud directory, fork and clone this repository
-- rename the repository `logs-backend`
+- `mkdir express-crud-fullstack && cd $_`
+- inside the `express-crud-fullstack` directory, fork and clone this repository
+- rename the repository `express-crud-backend`
 - `cd` into the repository
 - `npm install` (since this repo already has a package.json there is no need to use npm init -y)
 - Create a basic express app including all of the package installs and files that are needed
@@ -129,13 +129,17 @@ Create controllers that will hold the routes for your logs.
 
 ### Frontend
 
-- Navigate into your parent `logs-crud` folder.
-- `fork` and `clone` the [Logs CRUD frontend repo](https://github.com/10-3-pursuit/lab-express-crud-frontend)
-- Create a `Logs.jsx` component
+- Navigate into your parent `express-crud-fullstack` folder.
+- `fork` and `clone` the [lab-express-crud-frontend](https://github.com/10-3-pursuit/lab-express-crud-frontend)
+- Create a `Logs.jsx` component in the `src` folder
 - `fetch` all of the logs
 - diplay all of the values from the data in a list
-- for the boolean value you must display a string OR use a check and x emoji.
-- Nest the `Logs.jsx` component inside the `App.jsx` component and test your frontend
+- for the boolean value you should display a string OR use a check and x emoji.
+- Nest the `Logs.jsx` component inside the `App.jsx` component and test your frontend to see if it displays your values.
+
+### Frontend Bonus
+
+Add CSS
 
 ### Backend Bonus
 
@@ -165,15 +169,25 @@ Do not start Part 2 until you have completed at least the backend for part 1. If
 
 ### Frontend
 
-Using your `logs
+## Show
 
-- Create a `Logs.jsx` component
-- `fetch` all of the logs
+Using your `lab-express-crud-frontend` repo:
+
+- Create a `Log.jsx` component in the `src file` to display a single log
+- `fetch` a single log using the id of the log. This should ultimately
 - diplay all of the values from the data in a list
 - for the boolean value you must display a string OR use a check and x emoji.
 - Nest the `Logs.jsx` component inside the `App.jsx` component and test your frontend
 
-### Bonuses
+## Create
+
+- Create a `LogForm.jsx` file
+- include inputs for all of the key/value pairs from the model except for id
+- make a POST call to the backend that adds a log to the array of logs.
+- test the form by placing it above or below all of the logs in the `App.jsx` file.
+- the new log should automatically add to the page.
+
+### Backend Bonuses
 
 Add a validation function that checks to make sure that the values of each key are the correct type
 
