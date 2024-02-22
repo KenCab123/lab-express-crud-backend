@@ -10,7 +10,7 @@ Let's build the perfect Captain's Log App for our extraordinary captains. So tha
 
 ## Multiple Session Lab/Activity
 
-While you will start this lab/activity today, you will have many sessions to build it out.
+While you will start this lab/activity today, you will have several sessions to build it out.
 
 The different parts should align with what you are learning in lecture.
 
@@ -24,9 +24,9 @@ By the end, your app should have the following functionality
 |  4  | Destroy | /logs/:id |  DELETE   | **D**elete |             Delete a log              |
 |  5  | Update  | /logs/:id |    PUT    | **U**pdate |             Update a log              |
 
-There are tests that where you can check your progress. By the end, you should have all tests passing. Bonuses in each section are not required to pass the assignment.
+Bonuses in each section are not required to pass the assignment.
 
-If you finish ahead of time you can try the bonus challenges in each section, or work on `express-ufo`, [work on some code challenges](add link) or continue polishing your Bootstrap CSS skills.
+If you finish ahead of time you can try the bonus challenges or work on Codewars Challenges.
 
 If you feel like you are falling behind, reach out to an instructor.
 
@@ -36,14 +36,16 @@ If you feel like you are falling behind, reach out to an instructor.
 | :-: | :----: | :---: | :-------: | :------: | :-------------------------------: |
 |  1  | Index  | /logs |    GET    | **R**ead | Get a list (or index) of all logs |
 
-- fork and clone this repository
-- `cd` into this repository
-- `npm install` to install the dependencies for `Jest`
-- `npm test` to run tests
-- Make sure you are on the same level as the package.json and
-- create a basic express app, use the tests to help guide you
+- `mkdir logs-crud && cd $_`
+- inside the logs-crud directory, fork and clone this repository
+- rename the repository `logs-backend`
+- `cd` into the repository
+- `npm install` (since this repo already has a package.json there is no need to use npm init -y)
+- Create a basic express app including all of the package installs and files that are needed
+- Create a models folder
+- Inside the models folder create a `logs.model.js` file to hold your data.
 
-then, build an array of 3 objects that have a
+The shape of each object of your data will consist of the key value pairs below.
 
 - captainName: string
 - title: string
@@ -51,11 +53,12 @@ then, build an array of 3 objects that have a
 - mistakesWereMadeToday: boolean
 - daysSinceLastCrisis: number
 
-Let's get you started with the first few. To pass tests, be sure to keep this object as your first one.
+- Add this data below to your `logs.model.js`
 
 ```js
 module.exports = [
   {
+    id: 1,
     captainName: "Picard",
     title: "Courage",
     post: "Courage can be an emotion too.",
@@ -63,6 +66,7 @@ module.exports = [
     daysSinceLastCrisis: 100,
   },
   {
+    id: 2,
     captainName: "Ahab",
     title: "Whale",
     post: "By heavens man, we are turned round and round in this world, like yonder windlass, and fate is the handspike.",
@@ -70,6 +74,7 @@ module.exports = [
     daysSinceLastCrisis: 20,
   },
   {
+    id: 3,
     captainName: "Sarah Lance",
     title: "Vandal Savage",
     post: "I’d tell you to go to hell, but you’d probably just feel at home there.",
@@ -77,6 +82,7 @@ module.exports = [
     daysSinceLastCrisis: 0,
   },
   {
+    id: 4,
     captainName: "Ahab",
     title: "Insolence",
     post: "I don't give reasons. I give orders!",
@@ -84,6 +90,7 @@ module.exports = [
     daysSinceLastCrisis: 100,
   },
   {
+    id: 5,
     captainName: "Sarah Lance",
     title: "Ava",
     post: "Ava's the kind of girl that you take home to your parents, and I am the kind you take to an exorcism",
@@ -91,6 +98,7 @@ module.exports = [
     daysSinceLastCrisis: 0,
   },
   {
+    id: 6,
     captainName: "Ahab",
     title: "What is sleep?",
     post: "Sleep? That bed is a coffin, and those are winding sheets. I do not sleep, I die.",
@@ -98,6 +106,7 @@ module.exports = [
     daysSinceLastCrisis: 5,
   },
   {
+    id: 7,
     captainName: "Sarah Lance",
     title: "Jonah Hex",
     post: "I know you don’t like taking orders from a woman, but you’re gonna like getting your ass kicked by one even less.",
@@ -107,11 +116,28 @@ module.exports = [
 ];
 ```
 
+### App.js
+
 - create a route `/` that says something like `welcome to the captain's log`
-- create a route `/logs` that shows the array of logs you've created
 - create a 404 route that when a user tries to access a route that doesn't exist, they will see this page
 
-### Bonus
+### Controllers
+
+Create controllers that will hold the routes for your logs.
+
+- create a route `/logs` that returns the json for all of the logs in the data.
+
+### Frontend
+
+- Navigate into your parent `logs-crud` folder.
+- `fork` and `clone` the [Logs CRUD frontend repo](https://github.com/10-3-pursuit/lab-express-crud-frontend)
+- Create a `Logs.jsx` component
+- `fetch` all of the logs
+- diplay all of the values from the data in a list
+- for the boolean value you must display a string OR use a check and x emoji.
+- Nest the `Logs.jsx` component inside the `App.jsx` component and test your frontend
+
+### Backend Bonus
 
 Add functionality where if a user goes to
 
@@ -127,7 +153,7 @@ Add functionality where if a user goes to
 
 ## Part 2
 
-Do not start Part 2 until your index route passes all its tests. If you are stuck, be sure to ask for help.
+Do not start Part 2 until you have completed at least the backend for part 1. If you are stuck, be sure to ask for help.
 
 |  #  |   Action   |    URL    | HTTP Verb |    CRUD    |              Description              |
 | :-: | :--------: | :-------: | :-------: | :--------: | :-----------------------------------: |
@@ -135,7 +161,17 @@ Do not start Part 2 until your index route passes all its tests. If you are stuc
 |  3  | **Create** |   /logs   |   POST    | **C**reate |           Create a new log            |
 
 - add routes for create and show
-- add some logic so that if someone goes to an invalid array position they will be redirected to the 404 route you had written in the last part
+- add some logic so that if someone goes to an invalid array id they will be redirected to the 404 route you had written in the last part
+
+### Frontend
+
+Using your `logs
+
+- Create a `Logs.jsx` component
+- `fetch` all of the logs
+- diplay all of the values from the data in a list
+- for the boolean value you must display a string OR use a check and x emoji.
+- Nest the `Logs.jsx` component inside the `App.jsx` component and test your frontend
 
 ### Bonuses
 
@@ -149,15 +185,6 @@ Add a validation function that checks to make sure that the values of each key a
 
 If a wrong datatype is entered, send an error, otherwise push the new data into the array
 
-Add a new folder called `v2` - In version 2, instead of sending JSON, you'll be sending your data embedded in some HTML.
-
-- inside of the `v2` folder make a new `controllers` folder
-  - inside of the `controllers` folder add `logsController.js`
-- in `app.js` set up the new controllers so that the route will be `/v2/logs`
-- write some logic to display the index data embedded in an unordered list of anchor tags linking to the show routes at `/v2/logs/:index`
-- write some logic to display the show data as an `h1` tag for the title, a `p` tag for the post, and additional styling for the other fields. Create a back button that takes users back to `/v2/logs`
-- This code likely is becoming rather tough to maintain. You can look into setting up a template engine like [ejs](https://ejs.co/) or creating a create-react-app front end and connecting it to the main API `/logs` not `/v2/logs` - **NOTE:** we'll learn how to connect a create-react-app in a later lesson.
-
 ## Part 3
 
 Do not start Part 3 until your show and create routes pass all its tests. If you are stuck, be sure to ask for help.
@@ -168,9 +195,7 @@ Do not start Part 3 until your show and create routes pass all its tests. If you
 |  5  | **Update**  | /logs/:id |    PUT    | **U**pdate | Update a log |
 
 - add routes for delete and update
-- add some logic so that if someone goes to an invalid array position they will be redirected to the 404 route you had written in the last part
-
-- Your app should now pass all tests!
+- add some logic so that if someone goes to an invalid array id they will be redirected to the 404 route you had written in the last part
 
 ### Bonuses
 
