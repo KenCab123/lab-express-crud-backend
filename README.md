@@ -26,9 +26,9 @@ By the end, your app should have the following functionality
 
 Bonuses in each section are not required to pass the assignment.
 
-If you finish ahead of time you can try the bonus challenges or work on Codewars Challenges.
-
 If you feel like you are falling behind, reach out to an instructor.
+
+** Backend Routes HINT**: You will almost always, if not always want to return all of the array data in each route for this exercise. This will allow you to immediately set your state and automatically refresh the page... if you've placed your state correctly.
 
 ## Part 1
 
@@ -46,6 +46,7 @@ If you feel like you are falling behind, reach out to an instructor.
 
 The shape of each object of your data will consist of the key value pairs below.
 
+- id: number (SERIAL)
 - captainName: string
 - title: string
 - post: string
@@ -122,37 +123,21 @@ module.exports = [
 
 ### Controllers
 
-Create controllers that will hold the routes for your logs.
+Create controllers that will house the routes for your logs. (rememeber to set your default route for logs in the `app.js` file)
 
 - create a route `/logs` that returns the json for all of the logs in the data.
 
 ### Frontend
 
+**HELPER:** To refresh your memory of making fetch calls on the frontend to an API, you can refer to the bookmarks class exercise (less complicated) or the [Frontend React CRUD Lesson](https://github.com/10-3-pursuit/unit-react/tree/main/react-crud)
+
 - Navigate into your parent `express-crud-fullstack` folder.
 - `fork` and `clone` the [lab-express-crud-frontend](https://github.com/10-3-pursuit/lab-express-crud-frontend)
 - Create a `Logs.jsx` component in the `src` folder
 - `fetch` all of the logs
-- diplay all of the values from the data in a list
-- for the boolean value you should display a string OR use a check and x emoji.
+- In your `Logs.jsx` file, diplay each object from the data in a `<div>` element that dispalys each value (you may want to keep your state in `App.jsx` and pass it to `Logs.jsx` as props)
+- for the boolean value you should display a string
 - Nest the `Logs.jsx` component inside the `App.jsx` component and test your frontend to see if it displays your values.
-
-### Frontend Bonus
-
-Add CSS
-
-### Backend Bonus
-
-Add functionality where if a user goes to
-
-- `/logs?order=asc` it will organize the logs alphabetically
-- `/logs?order=desc` it will organize the logs in reverse alphabetical order
-- `/logs?mistakes=true` it will only show the logs where the value of `mistakesWereMadeToday` is true
-- `/logs?mistakes=false` it will only show the logs where the value of `mistakesWereMadeToday` is false
-- `/logs?lastCrisis=gt10` it will return all the logs where the `daysSinceLastCrisis`is **g**reater **t**than 10
-- `/logs?lastCrisis=gte20`it will return all the logs where the `daysSinceLastCrisis`is **g**reater **t**than or **e**qual to 20
-- `/logs?lastCrisis=lte5`it will return all the logs where the `daysSinceLastCrisis`is **l**ess **t**than or **e**qual to 5
-
-**Note** the original `/logs` route should be unaffected by these additions
 
 ## Part 2
 
@@ -164,11 +149,22 @@ Do not start Part 2 until you have completed at least the backend for part 1. If
 |  3  | **Create** |   /logs   |   POST    | **C**reate |           Create a new log            |
 
 - add routes for create and show
+- for create you will need to create an id to add to the `req.body` since we are not using a database. Feel free to use the code below. Let's assume your data from the model is assigned to the variable `logsArray`.
+
+`This will search for the last highest id in the array and add 1 to it` (it isn't perfect but can work for now)
+
+```js
+const id = logsArray[logsArray.length - 1].id + 1
+req.body.id = id
+```
+
+- From here add the rest of the logic to add your new log to the array.
+
 - add some logic so that if someone goes to an invalid array id they will be redirected to the 404 route you had written in the last part
 
 ### Frontend
 
-## Show
+## Show Frontend
 
 Using your `lab-express-crud-frontend` repo:
 
@@ -178,7 +174,7 @@ Using your `lab-express-crud-frontend` repo:
 - for the boolean value you must display a string OR use a check and x emoji.
 - Nest the `Logs.jsx` component inside the `App.jsx` component and test your frontend
 
-## Create
+## Create Frontend
 
 - Create a `LogForm.jsx` file
 - include inputs for all of the key/value pairs from the model except for id
@@ -210,7 +206,42 @@ Do not start Part 3 until your show and create routes pass all its tests. If you
 - add routes for delete and update
 - add some logic so that if someone goes to an invalid array id they will be redirected to the 404 route you had written in the last part
 
+## Delete
+
+In the `Logs.jsx` file:
+
+- create a Delete button
+- when you click the button it should delete the log from the backend which in turn should automatically re-render (not refresh) the Logs view.
+
+## Update
+
+Update is always the trickiest.
+
+- Create a `LogEdit.jsx` form
+- You can use many parts of the code from `Log.jsx`
+- display the values in the inputs
+- on submit, the program should update the backend and also refresh the frontend based on the backend data
+
 ### Bonuses
 
 - If you've already written a validation function, try adding it to the update route. If you have not written it yet, give it a try!
 - Go back and try any of the previous Bonuses
+
+### Backend Bonus
+
+Add functionality where if a user goes to
+
+- `/logs?order=asc` it will organize the logs alphabetically
+- `/logs?order=desc` it will organize the logs in reverse alphabetical order
+- `/logs?mistakes=true` it will only show the logs where the value of `mistakesWereMadeToday` is true
+- `/logs?mistakes=false` it will only show the logs where the value of `mistakesWereMadeToday` is false
+- `/logs?lastCrisis=gt10` it will return all the logs where the `daysSinceLastCrisis`is **g**reater **t**than 10
+- `/logs?lastCrisis=gte20`it will return all the logs where the `daysSinceLastCrisis`is **g**reater **t**than or **e**qual to 20
+- `/logs?lastCrisis=lte5`it will return all the logs where the `daysSinceLastCrisis`is **l**ess **t**than or **e**qual to 5
+
+**Note** the original `/logs` route should be unaffected by these additions
+
+### Frontend Bonus
+
+- Add Routes
+- Add CSS
