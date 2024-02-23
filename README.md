@@ -14,6 +14,8 @@ While you will start this lab/activity today, you will have several sessions to 
 
 The different parts should align with what you are learning in lecture.
 
+**NOTE:The most important part of this lab is the backend. However, you will want to keep up your frontend skills and complete the frontend as well since your first solo project will be full stack. React Router is not required. (but will be in your solo project)**
+
 By the end, your app should have the following functionality
 
 |  #  | Action  |    URL    | HTTP Verb |    CRUD    |              Description              |
@@ -129,7 +131,7 @@ Create controllers that will house the routes for your logs. (rememeber to set y
 
 ### Frontend
 
-**HELPER:** To refresh your memory of making fetch calls on the frontend to an API, you can refer to the bookmarks class exercise (less complicated) or the [Frontend React CRUD Lesson](https://github.com/10-3-pursuit/unit-react/tree/main/react-crud)
+**HELPER:** To refresh your memory of making fetch calls on the frontend to an API, you can refer to the bookmarks class exercise (less complicated) or the [Frontend React CRUD Lesson](https://github.com/10-3-pursuit/unit-react/tree/main/react-crud/lesson-notes)
 
 - Navigate into your parent `express-crud-fullstack` folder.
 - `fork` and `clone` the [lab-express-crud-frontend](https://github.com/10-3-pursuit/lab-express-crud-frontend)
